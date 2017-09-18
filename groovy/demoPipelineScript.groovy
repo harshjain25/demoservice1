@@ -5,6 +5,6 @@ node{
 	}
 
 	stage('done'){
-		sh 'done'
+		sh 'echo done'
 	}
 }
