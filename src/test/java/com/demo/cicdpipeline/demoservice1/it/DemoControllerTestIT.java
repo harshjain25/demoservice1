@@ -38,7 +38,7 @@ public class DemoControllerTestIT {
         auth.assertThat().statusCode(HttpStatus.OK.value()).
                 body(matchesJsonSchemaInClasspath("schemafiles/gettestschema.json"));
 
-        System.out.println("**********INTEGRATIONN TEST EXECUTED************");
+        System.out.println("**********INTEGRATION TEST EXECUTED************");
 
 //        when().get("/amazon/test")
 
