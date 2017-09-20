@@ -5,7 +5,7 @@ def branchName = 'testbranch'
 def credentialsId = '725c170f-8828-45ae-a379-44057601e14d'
 
 
-pipelineJob('demo pipeline'){
+pipelineJob('demo pipeline2'){
   
   definition {
     cpsScm {
