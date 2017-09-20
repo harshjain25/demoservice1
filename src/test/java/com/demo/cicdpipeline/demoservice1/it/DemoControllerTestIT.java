@@ -43,4 +43,16 @@ public class DemoControllerTestIT {
 //        when().get("/amazon/test")
 
     }
+
+
+    @Test
+    public void testShouldGetNewAccountNo(){
+
+        ValidatableResponse auth = given().get(RestAssured.baseURI + "/generate/accountno").then().
+                defaultParser(Parser.JSON);
+
+        auth.assertThat().statusCode(HttpStatus.OK.value()).
+                body(matchesJsonSchemaInClasspath("schemafiles/generateaccountnoschema.json"));
+
+    }
 }
