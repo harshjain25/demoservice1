@@ -1,10 +1,12 @@
-def gitHubUrl = 'https://github.com/harshjain25/demoservice1.git'
-def branchName = 'testbranch'
-
 pipeline{
     
     agent none
     
+    environment{
+        def gitHubUrl = 'https://github.com/harshjain25/demoservice1.git'
+        def branchName = 'failurebranch'
+    }    
+
     stages{
         stage('checkout-build') {
             agent any
@@ -34,22 +36,39 @@ pipeline{
             }
         }
         
-        stage('deploy-dev'){
+        stage('deploy-CI'){
             agent any
             
             steps{
                 sh 'echo "mvn spring-boot:run -Dspring.profiles.active=dev" | at now +1 minutes'
             }
         }
+
+        stage('qa-integration-test'){
+            agent any
+
+            steps{
+                sh 'mvn integration-test -P integration verify'
+            }
+        }
+
+        stage('UAT-deploy'){
+
+            agent any
+            steps{
+                sh 'echo "mvn spring-boot:run -Dspring.profiles.active=qa" | at now +1 minutes'
+            }
+        }
+
     }
     
     post{
         success{
             echo 'yayy..!!'
             
-            mail to: 'harsh@theinnovationinc.co',
-             subject: "Failed Pipeline: ",
-             body: "Something is wrong with pipeline for demo service"
+//            mail to: 'harsh@theinnovationinc.co',
+//             subject: "Failed Pipeline: ",
+//             body: "Something is wrong with pipeline for demo service"
         }
         unstable{
             echo 'uh.. ohhh..something went wrong !!'
