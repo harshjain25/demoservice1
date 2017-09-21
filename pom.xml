@@ -25,7 +25,7 @@
 
 		<spring-test-dbunit.version>1.2.1</spring-test-dbunit.version>
 		<unit-tests.skip>false</unit-tests.skip>
-		<integration-tests.skip>true</integration-tests.skip>
+		<integration-tests.skip>false</integration-tests.skip>
 	</properties>
 
 	<dependencies>

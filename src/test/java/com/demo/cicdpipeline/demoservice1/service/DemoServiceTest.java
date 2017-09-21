@@ -13,14 +13,14 @@ import static org.hamcrest.MatcherAssert.assertThat;
 public class DemoServiceTest {
 
     @InjectMocks
-    private DemoService demoService;
+    private DemoService demoService = new DemoServiceImpl();
 
     @Test
     public void testShouldGenerateRandomFiveDigitAccNo(){
 
-        int actualAccountNo = demoService.getNewAccountNo();
-        assertThat(demoService.getNewAccountNo(), is(not(nullValue())));
-        assertThat(String.valueOf(actualAccountNo).length(), is(5));
+        int actualAccountNo = demoService.getNewAccountId();
+        assertThat(demoService.getNewAccountId(), is(not(nullValue())));
+        assertThat(String.valueOf(actualAccountNo).length(), is(8));
         assertThat(String.valueOf(actualAccountNo).charAt(0)+"",
                 is(AnyOf.anyOf(is("1"), is("2"))));
     }

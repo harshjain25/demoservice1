@@ -48,7 +48,7 @@ public class DemoControllerTestIT {
     @Test
     public void testShouldGetNewAccountNo(){
 
-        ValidatableResponse auth = given().get(RestAssured.baseURI + "/generate/accountno").then().
+        ValidatableResponse auth = given().get(RestAssured.baseURI + "/generate/accountid").then().
                 defaultParser(Parser.JSON);
 
         auth.assertThat().statusCode(HttpStatus.OK.value()).

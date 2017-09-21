@@ -27,13 +27,13 @@ public class DemoController {
                 "}", HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/generate/accountno", method = RequestMethod.GET)
+    @RequestMapping(value = "/generate/accountid", method = RequestMethod.GET)
     public ResponseEntity getRandomAccountNo() {
 
-        int newAccountNo = demoService.getNewAccountNo();
+        int newAccountId = demoService.getNewAccountId();
 
         return new ResponseEntity("{  \n" +
-                "   \"accountno\": " + "\""+ String.valueOf(newAccountNo) + "\"\n" +
+                "   \"accountid\": " + "\""+ String.valueOf(newAccountId) + "\"\n" +
                 "}", HttpStatus.OK);
     }
 }

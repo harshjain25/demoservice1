@@ -3,7 +3,7 @@
      "definitions": {},
      "id": "http://example.com/example.json",
      "properties": {
-         "accountno": {
+         "accountid": {
              "type": "string"
            }
        },
