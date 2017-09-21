@@ -4,7 +4,7 @@
      "id": "http://example.com/example.json",
      "properties": {
          "accountid": {
-             "type": "string"
+             "type": "integer"
            }
        },
      "type": "object"
