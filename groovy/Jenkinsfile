@@ -51,5 +51,11 @@ pipeline{
              subject: "Failed Pipeline: ",
              body: "Something is wrong with pipeline for demo service"
         }
+        unstable{
+            echo 'uh.. ohhh..something went wrong !!'
+        }
+        failure{
+            echo 'build failed.. !!'
+        }
     }
 }
