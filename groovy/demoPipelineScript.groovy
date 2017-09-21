@@ -1,10 +1,13 @@
+def gitHubUrl = 'https://github.com/harshjain25/demoservice1.git'
+def branchName = 'testbranch'
+
 node{
 
-	stage('checkokut scm & package'){
+	stage('checkokut-build'){
 		git  url: gitHubUrl, 
     	branch: branchName
 
-    	sh 'mvn clean package'
+    	sh 'mvn clean package -Dmaven.test.skip=true'
 	}
 
 	stage('unit-test'){
@@ -21,15 +24,12 @@ node{
 }
 
 node {
-	
-	// stage('checkokut scm & package'){
-	// 	git  url: gitHubUrl, 
- //    	branch: branchName
 
- //    	sh 'mvn clean package'
-	// }
+	stage('qa-integration-test'){
+		sh 'mvn integration-test -P integration'
+	}
 		
-	stage('deploy-qa'){
+	stage('deploy-UAT'){
 		sh 'echo "mvn spring-boot:run -Dspring.profiles.active=qa" | at now + 1 minutes'
 	}		
 } 
