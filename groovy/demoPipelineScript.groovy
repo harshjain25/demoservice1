@@ -29,6 +29,8 @@ node{
 	}finally{
 		echo 'something happened..!!'
 	}
+
+	input 'should I proceec with deployment to UAT ??'
 }
 
 node {
